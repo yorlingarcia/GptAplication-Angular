@@ -7,6 +7,7 @@ import {
 } from '@angular/core';
 import {
   ChatMessageComponent,
+  GptMessageOrthograpyComponent,
   MyMessageComponent,
   TextMessageBoxComponent,
   TextMessageBoxEvent,
@@ -24,6 +25,7 @@ import { OpenAiService } from 'app/presentation/services/openai.service';
   imports: [
     CommonModule,
     ChatMessageComponent,
+    GptMessageOrthograpyComponent,
     MyMessageComponent,
     TypingLoaderComponent,
     TextMessageBoxComponent,
@@ -34,20 +36,28 @@ import { OpenAiService } from 'app/presentation/services/openai.service';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export default class OrthographyPageComponent {
-  public messages = signal<Message[]>([{ text: 'Hola Mundo', isGtp: false }]);
+  public messages = signal<Message[]>([]);
   public isLoading = signal(false);
 
   public openAiService = inject(OpenAiService);
 
   handleMessage(prompt: string) {
-    console.log(prompt);
-  }
+    this.isLoading.set(true);
 
-  handleMessageWithFile(event: TextMessageEvent) {
-    console.log(event);
-  }
+    this.messages.update((prev) => [
+      ...prev,
+      {
+        isGtp: false,
+        text: prompt,
+      },
+    ]);
 
-  handleMessageWithSelect(event: TextMessageBoxEvent) {
-    console.log(event);
+    this.openAiService.checkOrthograpy(prompt).subscribe((resp) => {
+      this.isLoading.set(false);
+      this.messages.update((prev) => [
+        ...prev,
+        { isGtp: true, text: resp.message, info: resp },
+      ]);
+    });
   }
 }

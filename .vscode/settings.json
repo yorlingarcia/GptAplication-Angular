@@ -4,5 +4,6 @@
       "externalTemplate": true,
       "skipStyle": true
     }
-  }
+  },
+  "material-icon-theme.activeIconPack": "angular"
 }

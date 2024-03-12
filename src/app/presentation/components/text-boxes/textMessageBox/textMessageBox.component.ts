@@ -23,7 +23,7 @@ import {
 })
 export class TextMessageBoxComponent {
   @Input() public placeholder: string = '';
-  @Input() public disabledCorrection: string = '';
+  @Input() public disabledCorrection: boolean = false;
 
   @Output() onMessage = new EventEmitter<string>();
 
