@@ -1,5 +1,5 @@
 <div class="chat-container">
-  <div class="cha-message">
+  <div class="chat-messages">
     <div class="grid gap-y-2">
       <!-- chat message -->
       <app-chat-message
@@ -7,8 +7,19 @@
       ></app-chat-message>
 
       <app-my-message text="Hola mundo"></app-my-message>
+
+      <app-typing-loader></app-typing-loader>
     </div>
   </div>
 
   <!-- messages box -->
+  <!-- <app-text-message-box
+    placeholder="Escribe aqui tu mensaje"
+    (onMessage)="handleMessage($event)"
+  /> -->
+
+  <app-text-message-box-file
+    placeholder="Escribe aqui tu mensaje"
+    (onMessage)="handleMessageWithFile($event)"
+  />
 </div>
