@@ -5,36 +5,34 @@ import {
   inject,
   signal,
 } from '@angular/core';
+import { ReactiveFormsModule } from '@angular/forms';
 import {
+  TextMessageEvent,
+  TextMessageBoxEvent,
   ChatMessageComponent,
   MyMessageComponent,
-  TextMessageBoxComponent,
-  TextMessageBoxEvent,
-  TextMessageBoxFileComponent,
-  TextMessageBoxSelectComponent,
-  TextMessageEvent,
   TypingLoaderComponent,
+  TextMessageBoxComponent,
 } from '@components/index';
 import { Message } from '@interfacesmessages.interface';
 import { OpenAiService } from 'app/presentation/services/openai.service';
 
 @Component({
-  selector: 'app-orthography-page',
+  selector: 'app-chat-template',
   standalone: true,
   imports: [
     CommonModule,
+    ReactiveFormsModule,
     ChatMessageComponent,
     MyMessageComponent,
-    TypingLoaderComponent,
     TextMessageBoxComponent,
-    TextMessageBoxFileComponent,
-    TextMessageBoxSelectComponent,
+    TypingLoaderComponent,
   ],
-  templateUrl: './orthographyPage.component.html',
+  templateUrl: './chatTemplate.component.html',
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export default class OrthographyPageComponent {
-  public messages = signal<Message[]>([{ text: 'Hola Mundo', isGtp: false }]);
+export class ChatTemplateComponent {
+  public messages = signal<Message[]>([]);
   public isLoading = signal(false);
 
   public openAiService = inject(OpenAiService);
@@ -43,11 +41,11 @@ export default class OrthographyPageComponent {
     console.log(prompt);
   }
 
-  handleMessageWithFile(event: TextMessageEvent) {
-    console.log(event);
-  }
+  // handleMessageWithFile(event: TextMessageEvent) {
+  //   console.log(event);
+  // }
 
-  handleMessageWithSelect(event: TextMessageBoxEvent) {
-    console.log(event);
-  }
+  // handleMessageWithSelect(event: TextMessageBoxEvent) {
+  //   console.log(event);
+  // }
 }

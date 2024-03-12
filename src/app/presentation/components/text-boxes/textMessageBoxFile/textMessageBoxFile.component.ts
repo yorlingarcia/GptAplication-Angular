@@ -23,7 +23,6 @@ export interface TextMessageEvent {
 })
 export class TextMessageBoxFileComponent {
   @Input() public placeholder: string = '';
-  @Input() public disabledCorrection: string = '';
 
   @Output() onMessage = new EventEmitter<TextMessageEvent>();
 
