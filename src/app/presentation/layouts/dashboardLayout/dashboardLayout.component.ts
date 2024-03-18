@@ -12,5 +12,5 @@ import { routes } from '../../../app.routes';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DashboardLayoutComponent {
-  public routes = routes[0].children?.filter((route) => route.data);
+  public routes = routes[0].children?.filter((route) => route.data) as any;
 }

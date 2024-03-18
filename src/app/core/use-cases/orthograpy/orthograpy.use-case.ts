@@ -25,7 +25,7 @@ export const orthograpyUseCase = async (prompt: string) => {
       ok: false,
       userScore: 0,
       errors: [],
-      message: 'No se pudo realizar la correccion',
+      message: 'No se pudo realizar la correccion revise la consola',
     };
   }
 };

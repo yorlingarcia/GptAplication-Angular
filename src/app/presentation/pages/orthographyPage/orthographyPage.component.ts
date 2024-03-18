@@ -10,10 +10,8 @@ import {
   GptMessageOrthograpyComponent,
   MyMessageComponent,
   TextMessageBoxComponent,
-  TextMessageBoxEvent,
   TextMessageBoxFileComponent,
   TextMessageBoxSelectComponent,
-  TextMessageEvent,
   TypingLoaderComponent,
 } from '@components/index';
 import { Message } from '@interfacesmessages.interface';
