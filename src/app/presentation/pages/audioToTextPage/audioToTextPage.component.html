@@ -1,1 +1,23 @@
-<p>audioTextPage works!</p>,
+<div class="chat-container">
+  <div class="chat-messages">
+    <div class="grid gap-y-2">
+      <!-- chat message -->
+      <app-chat-message
+        text="Ingresa el audio que quieres transformar a texto"
+      />
+      @for(message of messages(); track $index ){ @if(message.isGtp){
+      <app-chat-message [text]="message.text" />
+      } @else {
+      <app-my-message [text]="message.text" />
+      } } @if(isLoading()){
+
+      <app-typing-loader />
+      }
+    </div>
+  </div>
+
+  <app-text-message-box-file
+    placeholder="Escribe aqui tu mensaje"
+    (onMessage)="handleMessageWithFile($event)"
+  />
+</div>
