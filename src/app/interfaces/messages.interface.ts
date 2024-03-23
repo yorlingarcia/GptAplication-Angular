@@ -7,4 +7,8 @@ export interface Message {
     message: string;
   };
   audioUrl?: string;
+  iamgeInfo?: {
+    url: string;
+    alt: string;
+  };
 }
