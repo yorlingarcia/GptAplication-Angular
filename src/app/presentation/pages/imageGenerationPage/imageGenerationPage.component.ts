@@ -58,12 +58,4 @@ export default class ImageGenerationPageComponent {
       ]);
     });
   }
-
-  // handleMessageWithFile(event: TextMessageEvent) {
-  //   console.log(event);
-  // }
-
-  // handleMessageWithSelect(event: TextMessageBoxEvent) {
-  //   console.log(event);
-  // }
 }
